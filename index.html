@@ -1,25 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
+<html lang="fr">
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta link rel="stylesheet" type="text/css" href="css/style.css">
-        <title> Dress Up Game</title>
+        <title>Dress Up Game</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <div id="container">
-            <div id="background">
-                <div id="hairback"></div>
-                <div id="man"> </div>
-                <div id="shoes"> </div>
-                <div id="clothes"> </div>
-                <div id="hairfront"></div>
+        <main id="game-wrapper">
+            <!-- Zone du personnage (conserve le ratio 555x987) -->
+            <div id="character-stage">
+                <div id="background">
+                    <div id="hairback" class="layer"></div>
+                    <div id="man" class="layer"></div>
+                    <div id="shoes" class="layer"></div>
+                    <div id="clothes" class="layer"></div>
+                    <div id="hairfront" class="layer"></div>
+                </div>
             </div>
 
-            <button type="button" value="NEXT" id="nexthair" onclick="nexthair()">NEXT</button>
-            <button type="button" value="NEXT" id="nextdress" onclick="nextdress()">NEXT</button>
-            <button type="button" value="NEXT" id="nextshoe" onclick="nextshoe()">NEXT</button>
-        </div>
+            <!-- Barre de menu style Dress-Up -->
+            <nav id="wardrobe-menu" aria-label="Menu garde-robe">
+                <h1 class="menu-title">Garde à robe</h1>
+
+                <div class="category-card">
+                    <span class="category-label">Coiffure</span>
+                    <div class="btn-group">
+                        <button type="button" class="dress-btn" onclick="prevhair()" aria-label="Coiffure précédente">◀</button>
+                        <button type="button" class="dress-btn" onclick="nexthair()" aria-label="Coiffure suivante">▶</button>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <span class="category-label">Robe</span>
+                    <div class="btn-group">
+                        <button type="button" class="dress-btn" onclick="prevdress()" aria-label="Tenue précédente">◀</button>
+                        <button type="button" class="dress-btn" onclick="nextdress()" aria-label="Tenue suivante">▶</button>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <span class="category-label">Chaussures</span>
+                    <div class="btn-group">
+                        <button type="button" class="dress-btn" onclick="prevshoe()" aria-label="Chaussures précédentes">◀</button>
+                        <button type="button" class="dress-btn" onclick="nextshoe()" aria-label="Chaussures suivantes">▶</button>
+                    </div>
+                </div>
+            </nav>
+        </main>
 
         <script src="js/code.js"></script>
     </body>

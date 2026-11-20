@@ -1,215 +1,208 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+/* Reset de base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	line-height: 1;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffe6f0 0%, #e6f0ff 100%);
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 15px;
 }
 
-ol, ul {
-	list-style: none;
+/* Conteneur principal (Desktop & Tablette : côte à côte) */
+#game-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    height: calc(100dvh - 30px);
 }
 
-blockquote, q {
-	quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-#container{
-    position: absolute;
-    margin:auto;
-    width: 755px;
-    height :987px;
-   background-color: aqua;
-}
-
-#background{
-    position:absolute;
-    width:555px;
-    height:987px;
-    left:100px;
-    right: 100px;
+/* Scène du personnage responsive */
+#character-stage {
+    position: relative;
+    height: 100%;
+    max-height: 987px;
+    aspect-ratio: 555 / 987;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(180, 120, 160, 0.25);
+    border: 4px solid #ffffff;
     background-color: rebeccapurple;
-    background-image: url("../img/resized_background.png");
 }
 
-#hairback{
-     position:absolute;
-    width:555px;
-    height:987px;
+/* Calques superposés fluides */
+#background,
+.layer,
+.hairback,
+.shoe1, .shoe2, .shoe3,
+.dress1, .dress2, .dress3,
+.hairfront1, .hairfront2, .hairfront3 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.hairback{
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url("../img/hairback.png");
-}
-#man{
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url("../img/body.png");
-}
+/* Images des calques */
+#background { background-image: url("../img/resized_background.png"); }
+.hairback   { background-image: url("../img/hairback.png"); }
+#man        { background-image: url("../img/body.png"); }
 
-#shoes{
-     position:absolute;
-    width:555px;
-    height:987px;
-}
+.shoe1      { background-image: url("../img/shoe1.png"); }
+.shoe2      { background-image: url("../img/shoe2.png"); }
+.shoe3      { background-image: url("../img/shoe3.png"); }
 
-.shoe1{
-     position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/shoe1.png);
-}
+.dress1     { background-image: url("../img/dress1.png"); }
+.dress2     { background-image: url("../img/dress2.png"); }
+.dress3     { background-image: url("../img/dress3.png"); }
 
-.shoe2{
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/shoe2.png);
+.hairfront1 { background-image: url("../img/hairfront1.png"); }
+.hairfront2 { background-image: url("../img/hairfront2.png"); }
+.hairfront3 { background-image: url("../img/hairfront3.png"); }
+
+/* Barre de menu style Dress-Up Game */
+#wardrobe-menu {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 3px solid #ffcce0;
+    border-radius: 24px;
+    padding: 24px;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 10px 25px rgba(255, 133, 179, 0.2);
 }
 
-.shoe3{
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/shoe3.png);
+.menu-title {
+    text-align: center;
+    color: #d64584;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed #ffcce0;
 }
 
-#clothes{
-    
-     position:absolute;
-    width:555px;
-    height:987px;
+.category-card {
+    background: #fff5f9;
+    border: 2px solid #ffd6e7;
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.dress1{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/dress1.png);
+.category-label {
+    color: #8a3b63;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
-.dress2{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/dress2.png);
+.btn-group {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
 }
 
-.dress3{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/dress3.png);
+/* Boutons tactiles et animés */
+.dress-btn {
+    background: linear-gradient(180deg, #ff85b3 0%, #ff5c97 100%);
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d63b75, 0 6px 12px rgba(214, 59, 117, 0.25);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 
-
-#hairfront{
-     position:absolute;
-    width:555px;
-    height:987px;
+.dress-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
 }
 
-.hairfront1{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/hairfront1.png);
+.dress-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #d63b75, 0 2px 5px rgba(214, 59, 117, 0.25);
 }
 
-.hairfront2{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/hairfront2.png);
-}
+/* --- Adaptation Tablette & Mobile (écran en portrait / étroit) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
 
-.hairfront3{
-    
-    position:absolute;
-    width:555px;
-    height:987px;
-    background-image: url(../img/hairfront3.png);
-}
+    #game-wrapper {
+        flex-direction: column;
+        gap: 12px;
+        height: calc(100dvh - 20px);
+    }
 
-#nexthair{
-    position:absolute;
-    right:50px;
-    top:150px;
-}
+    /* Le personnage prend tout l'espace vertical restant */
+    #character-stage {
+        height: auto;
+        flex: 1;
+        min-height: 0;
+        max-width: 100%;
+    }
 
-#nextdress{
-    position:absolute;
-    right:50px;
-    top:400px;
-}
+    /* Le menu devient une barre horizontale compacte en bas */
+    #wardrobe-menu {
+        width: 100%;
+        max-width: 500px;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 12px;
+        gap: 8px;
+        border-radius: 20px;
+    }
 
-#nextshoe{
-    position:absolute;
-    right:50px;
-    top:750px;
-}
+    .menu-title {
+        display: none; /* Gain de place sur mobile */
+    }
 
-#prevhair{
-    position:absolute;
-    left:50px;
-    top:150px;
-}
+    .category-card {
+        flex: 1;
+        padding: 8px 6px;
+        gap: 6px;
+        border-radius: 14px;
+    }
 
-#prevdress{
-    position:absolute;
-    left:50px;
-    top:400px;
-}
+    .category-label {
+        font-size: 0.85rem;
+    }
 
-#prevshoe{
-    position:absolute;
-    left:50px;
-    top:750px;
+    .btn-group {
+        gap: 10px;
+    }
+
+    .dress-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
 }

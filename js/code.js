@@ -1,93 +1,61 @@
-
-window.onload=init;
-
-function init()
-{
-    console.log("window has loaded");
-    state.i=1;
-    state.j=1;
-    state.k=1;
-    
-}
+window.onload = init;
 
 var state = {
-    i:0,
-    j:0,
-    k:0
+    dress: 1,
+    shoe: 1,
+    hair: 1
 };
 
-function nextdress()
-{
-    console.log("inside function nextdress");
-    console.log(state.i);
-    var dress=document.getElementById("clothes");
-    if(state.i===0){
-    dress.setAttribute("class","dress1");
-        state.i++;
-        console.log(state.i);
-    }
-    else
-     if(state.i===1){
-    dress.setAttribute("class","dress2");
-         state.i++;
-         console.log(state.i);
-    }
-    else
-     if(state.i===2){
-    dress.setAttribute("class","dress3");
-         state.i=0;
-    }
-    
+const TOTAL_ITEMS = 3;
+
+function init() {
+    updateDress();
+    updateShoe();
+    updateHair();
 }
 
-function nextshoe()
-{
-    console.log("inside function nextshoe");
-    console.log(state.j);
-    var shoe=document.getElementById("shoes");
-    if(state.j===0){
-    shoe.setAttribute("class","shoe1");
-        state.j++;
-        console.log(state.j);
-    }
-    else
-     if(state.j===1){
-    shoe.setAttribute("class","shoe2");
-         state.j++;
-         console.log(state.j);
-    }
-    else
-     if(state.j===2){
-    shoe.setAttribute("class","shoe3");
-         state.j=0;
-    }
-    
+/* --- Vêtements --- */
+function nextdress() {
+    state.dress = (state.dress % TOTAL_ITEMS) + 1;
+    updateDress();
 }
 
-function nexthair()
-{
-    console.log("inside function nexthair");
-    
-    console.log(state.k);
-    var hairf=document.getElementById("hairfront");
-    var hairb=document.getElementById("hairback");
-    hairb.setAttribute("class","hairback");
-    
-    if(state.k===0){
-    hairf.setAttribute("class","hairfront1");
-        state.k++;
-        console.log(state.k);
-    }
-    else
-     if(state.k===1){
-    hairf.setAttribute("class","hairfront2");
-         state.k++;
-         console.log(state.k);
-    }
-    else
-     if(state.k===2){
-    hairf.setAttribute("class","hairfront3");
-         state.k=0;
-    }
-    
+function prevdress() {
+    state.dress = (state.dress - 2 + TOTAL_ITEMS) % TOTAL_ITEMS + 1;
+    updateDress();
+}
+
+function updateDress() {
+    document.getElementById("clothes").className = "layer dress" + state.dress;
+}
+
+/* --- Chaussures --- */
+function nextshoe() {
+    state.shoe = (state.shoe % TOTAL_ITEMS) + 1;
+    updateShoe();
+}
+
+function prevshoe() {
+    state.shoe = (state.shoe - 2 + TOTAL_ITEMS) % TOTAL_ITEMS + 1;
+    updateShoe();
+}
+
+function updateShoe() {
+    document.getElementById("shoes").className = "layer shoe" + state.shoe;
+}
+
+/* --- Coiffure --- */
+function nexthair() {
+    state.hair = (state.hair % TOTAL_ITEMS) + 1;
+    updateHair();
+}
+
+function prevhair() {
+    state.hair = (state.hair - 2 + TOTAL_ITEMS) % TOTAL_ITEMS + 1;
+    updateHair();
+}
+
+function updateHair() {
+    document.getElementById("hairback").className = "layer hairback";
+    document.getElementById("hairfront").className = "layer hairfront" + state.hair;
 }
